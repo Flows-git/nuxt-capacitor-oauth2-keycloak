@@ -1,0 +1,47 @@
+version: '3.5'
+
+networks:
+  example_app:
+    name: 'expamle-app'
+
+volumes:
+  mysql_keycloak_storage:
+    name: 'expamle-app-mysql-keycloak-storage'
+
+services:
+  mysql_keycloak:
+    container_name: expamle-app-mysql-keycloak
+    image: mysql:8.0
+    restart: unless-stopped
+    networks:
+      - example_app
+    volumes:
+      - mysql_keycloak_storage:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Keycloak_Root_Passw0rd
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: My_Us3r_Passw0rd
+
+  keycloak:
+    container_name: expamle-app-keycloak
+    image: jboss/keycloak:16.1.1
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - example_app
+    environment:
+      DB_VENDOR: MYSQL
+      DB_ADDR: mysql_keycloak
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: My_Us3r_Passw0rd
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    depends_on:
+      - mysql_keycloak
