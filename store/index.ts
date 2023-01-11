@@ -1,0 +1,1 @@
+// activates vuex store

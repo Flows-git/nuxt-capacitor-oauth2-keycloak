@@ -1,11 +1,8 @@
 <template>
-  <Tutorial />
+  <div class="pt-8">
+    <h1>You are logged in!</h1>
+    <button @click="$auth.logout()">Logout</button>
+    <Tutorial />
+
+  </div>
 </template>
-
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage',
-})
-</script>
