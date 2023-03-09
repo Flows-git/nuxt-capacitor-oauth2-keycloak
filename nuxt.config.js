@@ -19,7 +19,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ mode: 'client', src: 'plugins/appUrlOpen' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -53,7 +53,7 @@ export default {
     strategies: {
       local: false,
       keycloak: {
-        scheme: 'oauth2',
+        scheme: '~/schemes/customOauth2',
         token: {
           property: 'access_token',
           type: 'Bearer',

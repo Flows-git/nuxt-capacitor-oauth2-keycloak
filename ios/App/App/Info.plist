@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>Nuxt Oauth Example</string>
+	<string>Nuxt Oauth Example</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +45,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLName</key>
+    <string>com.getcapacitor.capacitor</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>example-app</string>
+    </array>
+  </dict>
+</array>
+
 </dict>
 </plist>
