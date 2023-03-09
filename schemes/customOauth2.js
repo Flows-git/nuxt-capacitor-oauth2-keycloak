@@ -79,14 +79,8 @@ export default class CustomOauth2Scheme extends Oauth2Scheme {
         logout_uri: this.logoutRedirectURI,
       }
       const url = this.options.endpoints.logout + '?' + encodeQuery(opts)
-
-    
-    Browser.addListener('browserPageLoaded', () => {
-      Browser.close()
-      Browser.removeAllListeners()
-    })
-    Browser.open({ url, windowName: '_self' })
-  }
+      Browser.open({ url, windowName: '_self' })
+    }
     return this.$auth.reset()
   }
 }
